@@ -44,7 +44,7 @@ A secure, modern web application for managing email copy approvals with clients.
 
 ```bash
 cd /var/www/your-domain
-git clone https://github.com/yourusername/email-approval.git
+git clone https://github.com/crshdn/email-approval.git
 cd email-approval
 ```
 

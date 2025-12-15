@@ -34,40 +34,90 @@
     </script>
     <style>
         body { font-family: 'DM Sans', sans-serif; }
-        .sidebar-link { @apply flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-colors; }
-        .sidebar-link.active { @apply bg-electric-600 text-white; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: #e2e8f0;
+        }
+        .nav-item.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .nav-item.active .nav-icon {
+            color: #ffffff;
+        }
+        .nav-item .nav-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        .nav-item.logout-btn {
+            color: #f87171;
+        }
+        .nav-item.logout-btn:hover {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <aside class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col">
-            <div class="p-6 border-b border-slate-800">
-                <h1 class="text-xl font-bold text-white">Email Approval</h1>
-                <p class="text-sm text-slate-400 mt-1">Admin Portal</p>
+        <aside class="w-64 bg-slate-900/80 backdrop-blur-sm border-r border-slate-800/50 flex flex-col">
+            <!-- Logo Section -->
+            <div class="p-5 border-b border-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold text-white leading-tight">Email Approval</h1>
+                        <p class="text-xs text-slate-500">Admin Portal</p>
+                    </div>
+                </div>
             </div>
             
-            <nav class="flex-1 p-4 space-y-2">
-                <a href="/admin" class="sidebar-link <?= ($_SERVER['REQUEST_URI'] === '/admin') ? 'active' : '' ?>">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                    </svg>
-                    Dashboard
-                </a>
-                <a href="/admin/clients" class="sidebar-link <?= str_starts_with($_SERVER['REQUEST_URI'], '/admin/clients') ? 'active' : '' ?>">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Clients
-                </a>
+            <!-- Navigation -->
+            <nav class="flex-1 p-4">
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 px-3">Menu</p>
+                <div class="space-y-1">
+                    <a href="/admin" class="nav-item <?= ($_SERVER['REQUEST_URI'] === '/admin') ? 'active' : '' ?>">
+                        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="/admin/clients" class="nav-item <?= str_starts_with($_SERVER['REQUEST_URI'], '/admin/clients') || str_starts_with($_SERVER['REQUEST_URI'], '/admin/campaigns') ? 'active' : '' ?>">
+                        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span>Clients</span>
+                    </a>
+                </div>
             </nav>
             
-            <div class="p-4 border-t border-slate-800">
-                <a href="/admin/logout" class="sidebar-link text-red-400 hover:text-red-300 hover:bg-red-900/20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Logout Section -->
+            <div class="p-4 border-t border-slate-800/50">
+                <a href="/admin/logout" class="nav-item logout-btn">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                     </svg>
-                    Logout
+                    <span>Logout</span>
                 </a>
             </div>
         </aside>
