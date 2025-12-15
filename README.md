@@ -39,6 +39,7 @@ A secure, modern web application for managing email copy approvals with clients.
 - Composer
 - Nginx
 - Mailgun account (for email notifications)
+- TinyMCE API key (free at https://www.tiny.cloud/)
 
 ### Step 1: Clone the Repository
 
@@ -90,6 +91,7 @@ Required settings:
 - `MAILGUN_FROM_EMAIL` - From email address
 - `ADMIN_EMAIL` - Email to receive notifications
 - `APP_URL` - Your application URL (e.g., `https://emailapproval.yourdomain.com`)
+- `TINYMCE_API_KEY` - Your TinyMCE API key (get free key at https://www.tiny.cloud/)
 
 ### Step 5: Initialize Database
 
@@ -253,6 +255,7 @@ email-approval/
 | `APP_ENV` | Environment | `production` |
 | `APP_DEBUG` | Debug mode | `false` |
 | `SESSION_LIFETIME` | Session timeout (seconds) | `7200` |
+| `TINYMCE_API_KEY` | TinyMCE rich text editor API key | `your-api-key` |
 
 ## Troubleshooting
 
@@ -274,6 +277,11 @@ email-approval/
 ### Autoloader Issues
 - Regenerate autoloader: `composer dump-autoload -o`
 - Verify directory names match PSR-4 (capitalized)
+
+### TinyMCE Editor Not Working
+- Get a free API key at https://www.tiny.cloud/
+- Add `TINYMCE_API_KEY=your-key` to `.env`
+- If editor shows "read-only" warning, the API key is missing or invalid
 
 ## License
 
