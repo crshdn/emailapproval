@@ -25,10 +25,13 @@ class MailgunService
         $this->fromEmail = $_ENV['MAILGUN_FROM_EMAIL'] ?? 'noreply@example.com';
         $this->fromName = $_ENV['MAILGUN_FROM_NAME'] ?? 'Email Approval System';
         $this->adminEmail = $_ENV['ADMIN_EMAIL'] ?? '';
+        $region = $_ENV['MAILGUN_REGION'] ?? 'us';
         $this->db = Database::getConnection();
 
         if (!empty($apiKey)) {
-            $this->mailgun = Mailgun::create($apiKey);
+            // Use EU endpoint if region is set to 'eu'
+            $endpoint = ($region === 'eu') ? 'https://api.eu.mailgun.net' : 'https://api.mailgun.net';
+            $this->mailgun = Mailgun::create($apiKey, $endpoint);
         }
     }
 

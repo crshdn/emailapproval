@@ -88,6 +88,7 @@ Required settings:
 - `DB_PASSWORD` - Database password
 - `MAILGUN_API_KEY` - Your Mailgun API key
 - `MAILGUN_DOMAIN` - Your Mailgun sending domain
+- `MAILGUN_REGION` - Mailgun region: `us` (default) or `eu`
 - `MAILGUN_FROM_EMAIL` - From email address
 - `ADMIN_EMAIL` - Email to receive notifications
 - `APP_URL` - Your application URL (e.g., `https://emailapproval.yourdomain.com`)
@@ -247,6 +248,7 @@ email-approval/
 | `DB_PASSWORD` | Database password | `secure_password` |
 | `MAILGUN_API_KEY` | Mailgun API key | `key-xxxxx` |
 | `MAILGUN_DOMAIN` | Mailgun domain | `yourdomain.com` |
+| `MAILGUN_REGION` | Mailgun region (us or eu) | `us` |
 | `MAILGUN_FROM_EMAIL` | From email | `noreply@yourdomain.com` |
 | `MAILGUN_FROM_NAME` | From name | `Email Approval System` |
 | `ADMIN_EMAIL` | Admin notification email | `admin@yourdomain.com` |
