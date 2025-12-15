@@ -179,6 +179,32 @@ class AdminController
         exit;
     }
 
+    public function deleteClient(string $id): void
+    {
+        $this->auth->requireAuth();
+        
+        if (!$this->auth->validateCsrfToken($_POST['csrf_token'] ?? '')) {
+            $_SESSION['error'] = 'Invalid request.';
+            header("Location: /admin/clients/{$id}");
+            exit;
+        }
+
+        $clientModel = new Client();
+        $client = $clientModel->findById((int) $id);
+        
+        if (!$client) {
+            $_SESSION['error'] = 'Client not found.';
+            header('Location: /admin/clients');
+            exit;
+        }
+
+        $clientModel->delete((int) $id);
+
+        $_SESSION['success'] = 'Client "' . $client['name'] . '" has been deleted.';
+        header('Location: /admin/clients');
+        exit;
+    }
+
     public function regenerateToken(string $id): void
     {
         $this->auth->requireAuth();

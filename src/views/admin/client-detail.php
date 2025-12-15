@@ -85,6 +85,16 @@
                     </button>
                 </form>
             </div>
+            
+            <!-- Delete Client -->
+            <div class="pt-4 mt-4 border-t border-slate-700">
+                <form method="POST" action="/admin/clients/<?= $client['id'] ?>/delete" onsubmit="return confirm('Are you sure you want to delete this client? This will also delete all their campaigns and content. This action cannot be undone.')">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
+                    <button type="submit" class="w-full px-4 py-2 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white font-medium rounded-lg transition-all border border-red-600/30 hover:border-red-600">
+                        Delete Client
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

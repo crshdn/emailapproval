@@ -61,6 +61,7 @@ $routes = [
         '/^\/admin\/clients\/(\d+)\/update$/' => ['App\Controllers\AdminController', 'updateClient'],
         '/^\/admin\/clients\/(\d+)\/regenerate-token$/' => ['App\Controllers\AdminController', 'regenerateToken'],
         '/^\/admin\/clients\/(\d+)\/send-link$/' => ['App\Controllers\AdminController', 'sendLink'],
+        '/^\/admin\/clients\/(\d+)\/delete$/' => ['App\Controllers\AdminController', 'deleteClient'],
         '/^\/admin\/campaigns\/create$/' => ['App\Controllers\AdminController', 'createCampaign'],
         '/^\/admin\/campaigns\/(\d+)\/update$/' => ['App\Controllers\AdminController', 'updateCampaign'],
         '/^\/admin\/subjects\/create$/' => ['App\Controllers\AdminController', 'createSubject'],
