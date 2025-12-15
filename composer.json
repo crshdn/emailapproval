@@ -1,0 +1,21 @@
+{
+    "name": "leadsly/email-approval",
+    "description": "Email Approval System for client copy review",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "vlucas/phpdotenv": "^5.5",
+        "mailgun/mailgun-php": "^3.5",
+        "guzzlehttp/guzzle": "^7.0",
+        "ezyang/htmlpurifier": "^4.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
+

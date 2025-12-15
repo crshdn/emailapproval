@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Email Approval Portal Link</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a0f1a;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #0a0f1a;">
+        <tr>
+            <td style="padding: 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto; background-color: #1e293b; border-radius: 16px; overflow: hidden;">
+                    <!-- Header -->
+                    <tr>
+                        <td style="padding: 40px 40px 30px; text-align: center; background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+                            <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff;">Email Approval Portal</h1>
+                        </td>
+                    </tr>
+                    
+                    <!-- Body -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <p style="margin: 0 0 20px; font-size: 18px; color: #f1f5f9;">
+                                Hello <?= htmlspecialchars($clientName) ?>,
+                            </p>
+                            
+                            <p style="margin: 0 0 30px; font-size: 16px; line-height: 1.6; color: #94a3b8;">
+                                You have email content waiting for your review and approval. Click the button below to access your secure portal.
+                            </p>
+                            
+                            <!-- CTA Button -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 30px 0;">
+                                <tr>
+                                    <td style="border-radius: 8px; background-color: #3b82f6;">
+                                        <a href="<?= htmlspecialchars($portalUrl) ?>" target="_blank" style="display: inline-block; padding: 16px 32px; font-size: 16px; font-weight: 600; color: #ffffff; text-decoration: none;">
+                                            Access Your Portal
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="margin: 30px 0 0; font-size: 14px; line-height: 1.6; color: #64748b;">
+                                Or copy and paste this link into your browser:
+                            </p>
+                            <p style="margin: 10px 0 0; font-size: 14px; word-break: break-all; color: #60a5fa;">
+                                <?= htmlspecialchars($portalUrl) ?>
+                            </p>
+                            
+                            <hr style="margin: 30px 0; border: none; border-top: 1px solid #334155;">
+                            
+                            <p style="margin: 0; font-size: 13px; color: #64748b;">
+                                This is your private portal link. Please do not share it with others. If you did not request this link, please disregard this email.
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 20px 40px; background-color: #0f172a; text-align: center;">
+                            <p style="margin: 0; font-size: 12px; color: #475569;">
+                                &copy; <?= date('Y') ?> Email Approval System
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
